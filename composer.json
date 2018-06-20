@@ -1,0 +1,25 @@
+{
+    "name": "tansoft/websocketclient",
+    "description": "websocket client lib",
+    "keywords": ["websocket", "replay", "testcase"],
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "WebSocket\\":"src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Barry Tang",
+            "email": "20962493@qq.com",
+            "homepage": "https://github.com/tansoft/"
+        }
+    ],
+    "require": {
+        "textalk/websocket": "1.0.*"
+    },
+    "require-dev": {
+        "textalk/websocket": "1.0.*"
+    }
+}
