@@ -51,8 +51,8 @@ $client->loop();
 //or
 
 //setup rawdata playback
-//use flag RAWLOG_PLAYBACKMODE_QUICK for playback with no sleep
-$client->setupRawLog('rawdata.log', RAWLOG_PLAYBACKMODE_NORMAL);
+//use flag WebSocketClient::RAWLOG_PLAYBACKMODE_QUICK for playback with no sleep
+$client->setupRawLog('rawdata.log', WebSocketClient::RAWLOG_PLAYBACKMODE_NORMAL);
 $client->loop();
 
 ```

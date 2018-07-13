@@ -2,10 +2,6 @@
 
 namespace WebSocket;
 
-define('RAWLOG_PLAYBACKMODE_NONE',   0);//<record mode
-define('RAWLOG_PLAYBACKMODE_NORMAL', 1);//<playback in normal speed
-define('RAWLOG_PLAYBACKMODE_QUICK',  2);//<playback with no sleep
-
 /**
  * @desc
  * @package   WebSocket
@@ -15,6 +11,9 @@ define('RAWLOG_PLAYBACKMODE_QUICK',  2);//<playback with no sleep
  */
 
 class WebSocketClient{
+    const RAWLOG_PLAYBACKMODE_NONE = 0;   //<record mode
+    const RAWLOG_PLAYBACKMODE_NORMAL = 1; //<playback in normal speed
+    const RAWLOG_PLAYBACKMODE_QUICK = 2;  //<playback with no sleep
     protected $client = null;
     protected $uri = '';
     protected $handler = null;
@@ -34,12 +33,12 @@ class WebSocketClient{
         $this->ackback = $ackback;
         $this->ackround = $round;
     }
-    public function setupRawLog($rawlogfile, $playback = RAWLOG_PLAYBACKMODE_NONE) {
+    public function setupRawLog($rawlogfile, $playback = self::RAWLOG_PLAYBACKMODE_NONE) {
         $this->logfile = $rawlogfile;
         $this->playback = $playback;
     }
     public function send($msg) {
-        if ($this->playback == RAWLOG_PLAYBACKMODE_NONE) {
+        if ($this->playback == self::RAWLOG_PLAYBACKMODE_NONE) {
             try{
                 $this->client->send($msg);
             }catch(Exception $e) {
@@ -49,7 +48,7 @@ class WebSocketClient{
         return true;
     }
     public function loop() {
-        if ($this->playback == RAWLOG_PLAYBACKMODE_NONE) {
+        if ($this->playback == self::RAWLOG_PLAYBACKMODE_NONE) {
             return $this->_loopWithSocket();
         }
         return $this->_loopFromRawLog();
@@ -70,7 +69,7 @@ class WebSocketClient{
                     if ($firstoff == -1) {
                         $firstoff = microtime(true) - $ts;
                     }
-                    if ($this->playback == RAWLOG_PLAYBACKMODE_NORMAL) {
+                    if ($this->playback == self::RAWLOG_PLAYBACKMODE_NORMAL) {
                         $ts += $firstoff;
                         @time_sleep_until($ts);
                     }
