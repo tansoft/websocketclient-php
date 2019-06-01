@@ -10,13 +10,8 @@ Installing
 
 Preferred way to install is with [Composer](https://getcomposer.org/).
 
-Just add
+    composer require tansoft/websocketclient
 
-    "require": {
-      "tansoft/websocket": "1.0.*"
-    }
-
-in your projects composer.json.
 
 Client usage:
 -------------
